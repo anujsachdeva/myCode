@@ -1,0 +1,32 @@
+/*** How to run the program ***
+*******************************
+
+1. Type "make test" from the a3 directory to make the test file.
+
+2. The Makefile will send an executable called listTest to the bin folder.
+
+3. Navigate to bin folder and type ./listTest in order to run a test of the linkedList.c functions.
+
+4. Type "make sim" from the a3 directory to make the simulation. 
+
+5. Navigate to the bin folder and type ./runsim file1.txt file2.txt
+
+/*** About the test program ***
+**************************
+
+All of the linked list functions are tested with output for what is currently being tested. 
+
+
+/*** About the simulation ***
+**************************
+
+The program will read in from two files and build correct linked lists for both ticketlines.
+The program will fill the linked list snack line, by alternating between the two files. 
+The program finds the length of the snack line by summing the patrons purchase times.
+The program does not output the results to report.txt
+ 
+
+/*** Known errors ***
+*********************
+
+The simulation is not complete.

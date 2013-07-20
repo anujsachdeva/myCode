@@ -1,0 +1,442 @@
+/*************************testList.c***************************************
+Student Name: Angus Galloway                        Student Number:  0793049
+Date: April 1, 2013      	                   Course Name: CIS*2500
+I have exclusive control over this submission via my password.
+By including this statement in this header comment, I certify that:
+     1) I have read and understood the University policy on academic integrity;
+     2) I have completed the Computing with Integrity Tutorial on Moodle; and
+     3) I have achieved at least 80% in the Computing with Integrity Self Test.
+I assert that this work is my own. I have appropriately acknowledged any and all material
+(data, images, ideas or words) that I have used, whether directly quoted or paraphrased.
+Furthermore, I certify that this assignment was prepared by me specifically for this course.
+****************************************************************************/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include "linkedList.h"
+
+int main(){
+    
+    ListHeadPtr head;
+    ListHeadPtr empty = NULL;
+    ListHeadPtr temp = NULL;
+    ListHeadPtr root;
+    
+    Patron * first; /*Used for hardcoding a linked list for the first set of tests*/
+    Patron * second; 
+    Patron * third;
+    Patron * fourth;
+    
+    Patron * one; /*Used for making a second linked list for testing*/
+    Patron * two;
+    Patron * three;
+    Patron * four;
+    
+    Patron * front; /*Used for testing getFront*/
+    Patron * back;  /*Used for testing getBack*/
+    Patron * new;   /*Used for testing createPatron*/
+    
+    int bool;
+    int numPeople;
+    int passedTests=0;
+    int failedTests=0;
+    
+    char * formattedOutput;
+    char string[7] = {"sample"};
+    
+    first = malloc(sizeof(Patron));
+    second = malloc(sizeof(Patron));
+    third = malloc(sizeof(Patron));
+    fourth = malloc(sizeof(Patron));
+    
+    head = first;
+    
+    first->PatronID = malloc (sizeof(char )*6); 
+    first->PatronID = "angus";
+    first->next = second;    
+    
+    second->PatronID = malloc (sizeof(char )*6);
+    second->PatronID = "billy";
+    second->next = NULL; 
+    
+    third->PatronID = malloc (sizeof(char )*6);
+    third->PatronID = "jimmy";
+    third->next = NULL;    
+    
+    fourth->PatronID = malloc (sizeof(char )*6);
+    fourth->PatronID = "joey";
+    fourth->next = NULL;
+    
+    /**Testing addToFront**/
+    
+    printf("\nTesting addToFront function.\n"); 
+    
+    temp = addToFront(temp,fourth);
+    
+    printf("Adding to the front of an empty list.\n"); 
+    
+    if(temp != NULL){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    
+    printf("Adding to the front of a regular list.\n"); 
+    
+    head = addToFront(head,fourth);
+    
+    if(head != NULL){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    } 
+    
+    /**Testing addToBack**/
+    
+    printf("\nTesting addToBack function.\n");
+    
+    head = addToBack(head,second);
+    
+    printf("Adding to the back of a regular list.\n"); 
+    
+    if(head == NULL){
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    else{
+	printf("passed the test\n");
+	passedTests++;
+    }
+    
+    head = addToBack(head,third);
+    
+    printf("Adding to the back of a bigger list.\n"); 
+    
+    if(head == NULL){
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    else{
+	printf("passed the test\n");
+	passedTests++;
+    }
+    
+    empty = addToBack(empty,third);
+    
+    printf("Adding to the back of an empty list.\n"); 
+    
+    if(empty != NULL){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    
+    empty = addToBack(empty,fourth);
+    
+    printf("Adding to the back of the previous list.\n");
+    
+    if(empty != NULL){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }    
+    
+    /**Testing getFront**/
+    
+    printf("\nTesting getFront function.\n");
+    
+    front = getFront(empty);
+    
+    printf("Getting the front of an empty list.\n");
+    
+    if(front == empty){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    
+    front = getFront(head);
+    
+    printf("Getting the front of an regular list.\n");
+    
+    if(front == head){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }    
+        
+    /**Testing getBack**/
+    
+    printf("\nTesting getBack function.\n");
+    
+    empty = getBack(NULL);
+    
+    printf("Getting the back of a null list.\n");
+    
+    if(empty == NULL){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    
+    back = getBack(head);
+    
+    printf("Getting the back of a regular list.\n");
+    
+    if(back != NULL){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }    
+    
+    /**Testing printList**/
+    
+    printf("\nTesting printList function.\n");  
+    
+    formattedOutput = printList(head);
+    
+    printf("Printing a regular list.\n");
+    
+    if(formattedOutput != NULL){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }   
+    
+    formattedOutput = printList(NULL);
+    
+    printf("Printing an empty list.\n");
+    
+    if(strcmp(formattedOutput,"") == 0){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }   
+	
+    /**Testing isEmpty**/
+    
+    printf("\nTesting isEmpty function.\n"); 
+    
+    bool = isEmpty(NULL);
+    
+    printf("Checking to see if a null list is empty.\n"); 
+    
+    if(bool == true){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    
+    bool = isEmpty(head);
+    
+    printf("Checking to see if an filled list is empty.\n"); 
+       
+    if(bool == false){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    
+    
+    /**Testing length**/
+    
+    printf("\nTesting length function.\n");   
+    
+    numPeople = length(NULL);
+    
+    printf("Finding length of a null list.\n");
+    
+    if(numPeople == 0){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    
+    numPeople = length(0);
+    
+    printf("Finding length of wrong value.\n");
+    
+    if(numPeople == 0){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    
+    numPeople = length(head);
+    
+    printf("Finding length of regular list.\n");
+    
+    if(numPeople != 0){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    
+    /**Making a new linked list for testing remaining functions**/
+    
+    one = malloc(sizeof(Patron));
+    two = malloc(sizeof(Patron));
+    three = malloc(sizeof(Patron));
+    four = malloc(sizeof(Patron));
+    
+    root = one;  
+    
+    one->PatronID = malloc (sizeof(char )*6); 
+    one->PatronID = "angus";
+    one->next = second;    
+    
+    two->PatronID = malloc (sizeof(char )*6);
+    two->PatronID = "billy";
+    two->next = three; 
+    
+    three->PatronID = malloc (sizeof(char )*6);
+    three->PatronID = "jimmy";
+    three->next = four;    
+    
+    four->PatronID = malloc (sizeof(char )*6);
+    four->PatronID = "joey";
+    four->next = NULL;
+    
+    /**Testing removeFromBack**/
+    
+    printf("\nTesting removeFromBack function.\n"); 
+    
+    numPeople = length(root);
+    printf("There are %d people before removing from back.\n",numPeople);
+    
+    root = removeFromBack(root);
+    
+    numPeople = length(root);
+    
+    printf("Removing from the back of a list with multiple elements.\n"); 
+    
+    if(third->next == NULL && numPeople == 3){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    
+    root = removeFromBack(root);
+    root = removeFromBack(root);
+    
+    numPeople = length(root);
+    
+    printf("Removing from the back of a list with %d element(s).\n",numPeople); 
+    
+    root = removeFromBack(root);
+    
+    if(root == NULL){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    
+    
+    /**Testing removeFromFront**/
+    
+    printf("\nTesting removeFromFront function.\n"); 
+    
+    numPeople = length(head);
+    
+    printf("There are %d people before removing from front.\n",numPeople);
+    
+     
+    printf("Removing from the front of a list with 1 element.\n"); 
+    
+    head = removeFromFront(head);
+    
+    if(head == NULL){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    
+    head = removeFromFront(NULL);
+    
+    printf("Removing from the front of an empty list.\n"); 
+    
+    if(head == NULL){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }
+    
+    /**Testing createPatron**/
+    
+    printf("\nTesting createPatron function.\n"); 
+    
+    new = createPatron(string,1,0,120);
+    
+    printf("Creating a patron with set values.\n"); 
+    
+    if(new->isMovie == 1 && new->isSnack == 0 && new->seconds == 120){
+	printf("Passed the test\n");
+	passedTests++;
+    }
+    else{
+	printf("Failed the test\n");
+	failedTests++;
+    }  
+        
+    printf("\nTotal passed tests:%d\n",passedTests);
+    printf("Total failed tests:%d\n",failedTests);
+    
+    return(0);   
+}

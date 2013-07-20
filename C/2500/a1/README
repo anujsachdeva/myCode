@@ -1,0 +1,41 @@
+/*************************filename here.c****************************
+Student Name: Angus Galloway                        Student Number:0793049
+Date: January 21, 2013                          Course Name: CIS*2500
+I have exclusive control over this submission via my password.
+By including this statement in this header comment, I certify that:
+     1) I have read and understood the University policy on academic integrity;
+     2) I have completed the Computing with Integrity Tutorial on Moodle; and
+     3) I have achieved at least 80% in the Computing with Integrity Self Test.
+I assert that this work is my own. I have appropriately acknowledged any and all material
+(data, images, ideas or words) that I have used, whether directly quoted or paraphrased.
+Furthermore, I certify that this assignment was prepared by me specifically for this course.
+****************************************************************************/
+
+
+
+/*** How to run the program ***
+*******************************
+
+1. Type "make" from the a1 directory. 
+
+2. The Makefile will send the executable to the bin folder.
+
+3. Navigate to bin folder and type ./run 
+
+4. When you either win or tie, type any key to start a new game. 
+
+5. Press 'q' at any time to exit the game.*/
+
+/*** About the program ***
+**************************
+
+1. The program will prevent the user from placing a marker over top of another game piece.
+2. The program will determine if their was a tie.
+3. The program will prevent the user from moving out of bounds. */
+ 
+
+/*** Known errors ***
+*********************
+
+After you win or tie, for every SECOND game the grid will not appear. This does not affect gameplay.
+on your next try the grid will re-appear */

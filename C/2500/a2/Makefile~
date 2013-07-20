@@ -1,0 +1,4 @@
+all:
+	gcc -Wall -ansi src/rogue.c src/roguefunctions.c -Iinclude -o rogue -lncurses
+	
+	

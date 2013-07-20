@@ -1,0 +1,9 @@
+20X16 dn4 dw9 ds8 t8,7 m3,4 h6,5 m6,7 h9,6 t5,8 z13,2
+10X16 de4 dw9 ds8 t8,7 m3,4 h7,8
+5X16 dn4 dw9 ds8 t8,7 m3,4 h9,10
+10X16 de4 dw9 ds8 t8,7 m3,4 h11,11
+9X16 de4 dw9 ds8 t8,7 m3,4 h6,5
+10X16 de4 dw9 ds8 t8,7 m3,4 h6,5 p3,14 
+16X16 de4 ds2 ds8 t8,7 m3,4 h6,5
+12X16 de4 dn9 ds8 t8,7 m3,4 h6,5
+10X16 de4 dw9 ds8 t8,7 m3,4 h6,5
